@@ -8,6 +8,7 @@ app.use(function(req, res, next){
         next();
     }
     else{
+        console.log(req.hostname, req.url)
         res.redirect('http://' + req.hostname + req.url);  
     }
 });
