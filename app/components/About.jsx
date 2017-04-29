@@ -1,11 +1,12 @@
 const React = require('react');
 
-const About = React.createClass({
-    render(){
-        return(
-        <h1>About component</h1>
-        );
-     }
-});
+const About = (props) => {
+    return(
+        <div>
+            <h3>About component</h3>
+            <p>Hello from About page</p>
+        </div>
+    );
+};
 
 module.exports = About;
