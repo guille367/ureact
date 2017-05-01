@@ -2,9 +2,9 @@ const React = require('react');
 
 const About = (props) => {
     return(
-        <div>
-            <h3>About component</h3>
-            <p>Hello from About page</p>
+        <div className="text-center">
+            <h1>About component</h1>
+            <p>Papito, lo que me está costando esto no tiene nombre</p>
         </div>
     );
 };

@@ -15,19 +15,11 @@ const WeatherForm = React.createClass({
         return(
             <form onSubmit={this.onSubmitForm}>
                 <div className="row">
-                    <div className="col-md-3"></div>
-                    <div className="col-md-6">
-                        <div className="form-group">
-                            <h1 className="text-center">Get Weather</h1>
-                        </div>
-                        <div className="form-group">
-                            <input className="form-inline form-control" type="text" ref="city"/>
-                        </div>
-                        <div className="form-group">
-                            <button className="btn btn-default btn-block">Buscar</button>
-                        </div>
+                    <div className="medium-6 small-centered">
+                        <h1 className="text-center">Get Weather</h1>
+                        <input type="text" ref="city"/>
+                        <button className="hollow button expanded">Buscar</button>
                     </div>
-                    <div className="col-md-3"></div>
                 </div>
             </form>
         );

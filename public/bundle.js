@@ -16287,17 +16287,17 @@ var React = __webpack_require__(4);
 
 var About = function About(props) {
     return React.createElement(
-        'div',
-        null,
+        "div",
+        { className: "text-center" },
         React.createElement(
-            'h3',
+            "h1",
             null,
-            'About component'
+            "About component"
         ),
         React.createElement(
-            'p',
+            "p",
             null,
-            'Hello from About page'
+            "Papito, lo que me est\xE1 costando esto no tiene nombre"
         )
     );
 };
@@ -16588,35 +16588,21 @@ var WeatherForm = React.createClass({
             React.createElement(
                 'div',
                 { className: 'row' },
-                React.createElement('div', { className: 'col-md-3' }),
                 React.createElement(
                     'div',
-                    { className: 'col-md-6' },
+                    { className: 'medium-6 small-centered' },
                     React.createElement(
-                        'div',
-                        { className: 'form-group' },
-                        React.createElement(
-                            'h1',
-                            { className: 'text-center' },
-                            'Get Weather'
-                        )
+                        'h1',
+                        { className: 'text-center' },
+                        'Get Weather'
                     ),
+                    React.createElement('input', { type: 'text', ref: 'city' }),
                     React.createElement(
-                        'div',
-                        { className: 'form-group' },
-                        React.createElement('input', { className: 'form-inline form-control', type: 'text', ref: 'city' })
-                    ),
-                    React.createElement(
-                        'div',
-                        { className: 'form-group' },
-                        React.createElement(
-                            'button',
-                            { className: 'btn btn-default btn-block' },
-                            'Buscar'
-                        )
+                        'button',
+                        { className: 'hollow button expanded' },
+                        'Buscar'
                     )
-                ),
-                React.createElement('div', { className: 'col-md-3' })
+                )
             )
         );
     }
