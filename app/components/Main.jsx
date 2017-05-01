@@ -6,7 +6,11 @@ const Main = (props) => {
     return(
         <div>
             <Navigation></Navigation>
-            {props.children}
+            <div className="row">
+                <div className="columns medium-6 small-centered">
+                    {props.children}
+                </div>
+            </div>
         </div>
     );
 };
