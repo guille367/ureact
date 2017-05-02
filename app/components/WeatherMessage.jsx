@@ -3,8 +3,6 @@ const React = require('react');
 const WeatherMessage = (props) => {
     let msg ={};
     let {location, temp} = props;
-
-    console.log(location, temp);
     if(location && temp) {
         msg = (<h3>En {location} hacen {temp} grados celsiu</h3>);
     }

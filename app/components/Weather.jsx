@@ -3,11 +3,13 @@ var React = require('react');
 var WeatherForm = require('WeatherForm');
 var WeatherMessage = require('WeatherMessage');
 var openWeatherAPI = require('openWeatherAPI');
+var ModalErr = require('ModalErr');
 
 var Weather = React.createClass({
     getInitialState(){
         return{
             isLoading: false,
+            errorMessage: undefined,
         };
     },
     handleSearch(location){
@@ -23,23 +25,38 @@ var Weather = React.createClass({
                     location: data.name,
                     temp: data.main.temp,
                     isLoading: false,
+                    errorMessage: undefined,
                 });
             })
             .catch((err)=>{
                 _self.setState({
-                    isLoading: true,
+                    isLoading: false,
+                    errorMessage: 'No se encontró la ciudad.',
                 });
             });
+    },
+    componentDidMount(){
+        this.handleSearch(this.props.location.query.location);
+    },
+    componentWillReceiveProps(newProps){
+        this.handleSearch(newProps.location.query.location);
     },
     render(){
 
         let _self = this;
+        let {isLoading, temp, location, errorMessage} = this.state;
+
         let messageToShow = function(){
-            if(_self.state.isLoading){
+            if(isLoading){
                 return <h3>Fetching data..</h3>;
             }
-            else if(_self.state.location && _self.state.temp){
-                return <WeatherMessage location={_self.state.location} temp={_self.state.temp}/>;
+            else if(location && temp){
+                return <WeatherMessage location={location} temp={temp}/>;
+            }
+        }
+        let showErr = function(){
+            if(errorMessage){
+                return <ModalErr texterr={errorMessage}/>;
             }
         }
 
@@ -53,6 +70,7 @@ var Weather = React.createClass({
                 <div className="row">
                     <div className="col-md-12">
                         {messageToShow()}
+                        {showErr()}
                     </div>
                 </div>
             </div>

@@ -9,10 +9,10 @@ const Examples = (props) => {
             </div>
             <ol>
                 <li>
-                    <Link to="/location=Avellaneda">Avellaneda, AR</Link>
+                    <Link to="/?location=Avellaneda">Avellaneda, AR</Link>
                 </li> 
                 <li>
-                    <Link to="/location=Morro">Morro de Sao Paulo, BR</Link>
+                    <Link to="/?location=Morro">Morro de Sao Paulo, BR</Link>
                 </li>  
             </ol>
         </div>
