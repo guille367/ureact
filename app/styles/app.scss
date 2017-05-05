@@ -1,0 +1,21 @@
+@import 'base/variables';
+
+.menu-text {
+    color: white;
+}
+
+.top-bar {
+    background-color: $grey;
+    .menu{
+        background-color: $grey;
+    }
+    p {
+        color: white;
+    }
+    .active-link{
+        font-weight: bold;
+    }
+    span{
+        color: white;
+    }
+}

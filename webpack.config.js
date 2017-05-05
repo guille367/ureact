@@ -17,7 +17,7 @@ module.exports = {
   plugins:[
     new webpack.ProvidePlugin({
         "$": "jquery",
-        "jQuery": "jquery"
+        "jQuery": "jquery",
     })],
     resolve: {
         modules: [
@@ -27,15 +27,9 @@ module.exports = {
         extensions: ['*','.js','.jsx'],
         alias:{
             Main: 'app/components/Main',
-            Navigation: 'app/components/Navigation.jsx',
-            Weather: 'app/components/Weather.jsx',
-            Examples: 'app/components/Examples.jsx',
-            About: 'app/components/About.jsx',
-            Weather:'app/components/Weather.jsx',
-            WeatherMessage: 'app/components/WeatherMessage.jsx',
-            WeatherForm:'app/components/WeatherForm.jsx',
-            openWeatherAPI: 'app/api/openWeatherAPI.jsx',
             ModalErr: 'app/components/ModalErr.jsx',
+            Navigation: 'app/components/Navigation.jsx',
+            applicationStyles: 'app/styles/app.scss',
         }
     },
     module:{

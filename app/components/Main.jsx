@@ -1,18 +1,23 @@
 const React = require('react');
-const Navigation = require('Navigation');
+import {Navigation} from './Navigation';
+import {Timer} from './Timer';
+import {Countdown} from './Countdown';
 
+export class Main extends React.Component {
+    constructor(props){
+        super(props);
+    }
 
-const Main = (props) => {
-    return(
-        <div>
-            <Navigation></Navigation>
-            <div className="row">
-                <div className="columns medium-6 small-centered">
-                    {props.children}
+    render(){
+        return (
+            <div>
+                <Navigation></Navigation>
+                <div className="row">
+                    <div className="columns medium-12 small-centered">
+                        {this.props.children}
+                    </div>
                 </div>
             </div>
-        </div>
-    );
+        );
+    }
 };
-
-module.exports = Main;

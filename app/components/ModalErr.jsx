@@ -2,12 +2,12 @@ const React = require('react');
 const ReactDOMServer = require('react-dom/server');
 const ReactDOM = require('react-dom');
 
-var ModalErr = React.createClass({
-    getInitialState(){
-        return {
-            texterr: this.props.texterr,
-        }
-    },
+export class ModalErr extends React.Component{
+    constructor(props){
+        super(props);
+        this.texterr = this.props.texterr;
+    }
+
     componentDidMount(){
         var {texterr} = this.props;
         var markup = (
@@ -27,7 +27,8 @@ var ModalErr = React.createClass({
 
         var modal = new Foundation.Reveal($('#modal'));
         modal.open();
-    },
+    }
+    
     render(){
         let {texterr} = this.state;
         
@@ -35,6 +36,4 @@ var ModalErr = React.createClass({
             <div></div>
         );
     }
-});
-
-module.exports = ModalErr;
+};
