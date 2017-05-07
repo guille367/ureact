@@ -9,7 +9,7 @@ export class Navigation extends React.Component{
                     <div className="top-bar-left">
                         <ul className="menu">
                             <li>
-                                <Link to="/"><span>React time App</span></Link>
+                                <Link to="/"><span className="index-text">React time App</span></Link>
                             </li>
                             <li>
                                 <Link to="/Timer" activeClassName="active-link">Timer</Link>

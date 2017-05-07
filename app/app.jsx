@@ -1,7 +1,7 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 const {Route, Router, IndexRoute, hashHistory, browserHistory} = require('react-router');
-import {Main} from './components/Main';
+import {Main} from 'app/components/Main';
 import {Timer} from './components/Timer';
 import {Countdown} from './components/Countdown';
 

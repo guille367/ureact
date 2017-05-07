@@ -1,23 +1,38 @@
 var webpackConf = require('./webpack.config.js');
 
-module.exports = function(conf){
-    conf.set({
-        browsers: ['chrome'],
-        singleRun: true,
-        frameworks: ['mocha'],
-        files: ['app/tests/**/*.jsx'],
-        preprocesors: {
-            'app/tests/**/*.jsx': ['webpack','sourcemap']
-        },
-        reporters: ['mocha'],       
-        client:{
-            mocha: {
-                timeout: '5000'
-            }
-        },
-        webpack: webpackConf,
-        webpackServer: {
-            noInfo: true,
-        }
-    });
-}
+module.exports = function(config) {
+  config.set({
+    frameworks: ['mocha','jasmine'],
+    reporters: ['mocha'],
+    mochaReporter: {
+      colors: {
+        success: 'green',
+        info: 'bgGreen',
+        warning: 'cyan',
+        error: 'bgRed'
+      },
+      symbols: {
+        success: '+',
+        info: '#',
+        warning: '!',
+        error: 'x'
+      }
+    },
+    files: [
+      'app/tests/**/*.jsx',
+      'app/tests/*.jsx',
+    ],
+    resolve: {
+      extensions: [ '', '.js', '.jsx' ]
+    },
+    webpack: webpackConf,
+    webpackServer: {
+        noInfo: true,
+    },
+    preprocessors: {
+      '**/*.js': ['sourcemap'],
+      'app/tests/**/*.jsx': ['webpack','sourcemap']
+    },
+    
+  });
+};

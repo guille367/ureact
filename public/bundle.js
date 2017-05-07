@@ -13645,7 +13645,7 @@ var Navigation = exports.Navigation = function (_React$Component) {
                                     { to: '/' },
                                     React.createElement(
                                         'span',
-                                        null,
+                                        { className: 'index-text' },
                                         'React time App'
                                     )
                                 )
