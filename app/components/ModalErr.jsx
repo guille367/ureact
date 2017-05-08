@@ -1,6 +1,6 @@
-const React = require('react');
-const ReactDOMServer = require('react-dom/server');
-const ReactDOM = require('react-dom');
+import React from 'react';
+import ReactDOMServer from 'react-dom/server';
+import ReactDOM from 'react-dom';
 
 export class ModalErr extends React.Component{
     constructor(props){

@@ -1,4 +1,4 @@
-const React = require('react');
+import React from 'react';
 import {Navigation} from './Navigation';
 import {Timer} from './Timer';
 import {Countdown} from './Countdown';

@@ -1,0 +1,19 @@
+@import 'base/variables';
+
+.clock{
+    align-items: center;
+    border-radius: 50%;
+    background-color: $background-clock;
+    border: 2px solid $border-clock;
+    display: flex;
+    height: 14rem;
+    justify-content: center;
+    margin: 4rem auto;
+    width: 14rem;
+}
+
+.clock-text{
+    color: $text-clock-color;
+    font-size: 2.25rem;
+    font-weight: 300;
+}

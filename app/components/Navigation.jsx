@@ -1,4 +1,4 @@
-const React = require('react');
+import React from 'react';
 const {Link, IndexLink} = require('react-router');
 
 export class Navigation extends React.Component{

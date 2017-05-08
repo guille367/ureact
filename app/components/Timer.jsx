@@ -1,4 +1,5 @@
-const React = require('react');
+import React from 'react';
+import Clock from './Clock';
 
 export class Timer extends React.Component{
     render (){

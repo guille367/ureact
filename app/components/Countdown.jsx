@@ -1,9 +1,10 @@
-const React = require('react');
+import React from 'react';
+import {Clock} from './Clock';
 
 export class Countdown extends React.Component{
     render(){
         return (
-            <p>CD</p>
+            <Clock seconds={129}/>
         );
     }
 }
