@@ -6,7 +6,9 @@ export class Clock extends React.Component{
         super(props);
         this.seconds = 0;
     }
-    
+    componentDidUpdate(newProps, newState){
+        this.props.onSecondsFormated(this.formatSeconds(this.props.seconds));
+    }
     formatSeconds(totalSecs){
         var seconds = Math.floor(totalSecs%60);
         var minutes = Math.floor(totalSecs/60);

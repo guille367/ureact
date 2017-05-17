@@ -9,15 +9,17 @@ export class Timer extends React.Component{
             time: 0,
             status: 'stopped',
         }
+        this.secondsFormated = '';
         this.handleUnmount = this.handleUnmount.bind(this);
         this.handleStatusChange = this.handleStatusChange.bind(this);
         this.startTimer = this.startTimer.bind(this); 
+        this.handleSecondsFormated = this.handleSecondsFormated.bind(this);
     }
     handleUnmount(param){
         console.log(param);
     }
     componentDidUpdate(prevProps, prevStatus){
-        if(this.state.status != prevStatus){
+        if(this.state.status != prevStatus.status && this.state.status != 'lapse'){
             switch(this.state.status){
                 case 'started':
                         this.startTimer();
@@ -25,11 +27,16 @@ export class Timer extends React.Component{
                 case 'stopped':
                         clearInterval(this.interval);
                         this.interval = undefined;
+                        this.setState({
+                            time: 0,
+                        })
                     break;
                 case 'lapse':
-                    console.log(this.state.time);
+                        console.log(seconds)
                     break;
                 case 'paused':
+                        clearInterval(this.interval);
+                        this.interval = undefined;
                     break;
             }
         }
@@ -46,6 +53,9 @@ export class Timer extends React.Component{
             });
         },1000);
     }
+    handleSecondsFormated(seconds){
+        this.secondsFormated = seconds;
+    }
     render (){
         let renderControls = () => {
             return(
@@ -56,7 +66,7 @@ export class Timer extends React.Component{
         return (
             <div className="row">
                 <div className="column small-centered medium-6">
-                    <Clock seconds={this.state.time} isTimer={true} />
+                    <Clock seconds={this.state.time} isTimer={true} onSecondsFormated={this.handleSecondsFormated}/>
                 </div>
                 <div className="column small-centered medium-6">
                     {renderControls()}

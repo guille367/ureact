@@ -8804,6 +8804,11 @@ var Clock = exports.Clock = function (_React$Component) {
     }
 
     _createClass(Clock, [{
+        key: 'componentDidUpdate',
+        value: function componentDidUpdate(newProps, newState) {
+            this.props.onSecondsFormated(this.formatSeconds(this.props.seconds));
+        }
+    }, {
         key: 'formatSeconds',
         value: function formatSeconds(totalSecs) {
             var seconds = Math.floor(totalSecs % 60);
@@ -8892,23 +8897,43 @@ var Controls = exports.Controls = function (_React$Component) {
             var _this3 = this;
 
             var renderStartStopButton = function renderStartStopButton() {
-                if (_this3.props.countdownStatus === 'started') {
+                var _props = _this3.props,
+                    countdownStatus = _props.countdownStatus,
+                    isTimer = _props.isTimer;
+
+                var lapseCtrl = _react2.default.createElement(
+                    'button',
+                    { className: 'button secondary', onClick: _this3.handleClickButton('lapse') },
+                    'Lapse'
+                );
+
+                if (countdownStatus === 'started') {
                     return _react2.default.createElement(
-                        'button',
-                        { className: 'button secondary', onClick: _this3.handleClickButton('paused') },
-                        'Pause'
+                        'div',
+                        null,
+                        lapseCtrl,
+                        _react2.default.createElement(
+                            'button',
+                            { className: 'button secondary', onClick: _this3.handleClickButton('paused') },
+                            'Pause'
+                        )
                     );
-                } else if (_this3.props.countdownStatus === 'stopped') {
+                } else if (countdownStatus === 'stopped') {
                     return _react2.default.createElement(
                         'button',
                         { className: 'button primary', onClick: _this3.handleClickButton('started') },
                         'Start'
                     );
-                } else if (_this3.props.countdownStatus === 'paused') {
+                } else if (countdownStatus === 'paused') {
                     return _react2.default.createElement(
-                        'button',
-                        { className: 'button primary', onClick: _this3.handleClickButton('started') },
-                        'Continue'
+                        'div',
+                        null,
+                        lapseCtrl,
+                        _react2.default.createElement(
+                            'button',
+                            { className: 'button primary', onClick: _this3.handleClickButton('started') },
+                            'Continue'
+                        )
                     );
                 }
             };
@@ -9119,9 +9144,11 @@ var Timer = exports.Timer = function (_React$Component) {
             time: 0,
             status: 'stopped'
         };
+        _this.secondsFormated = '';
         _this.handleUnmount = _this.handleUnmount.bind(_this);
         _this.handleStatusChange = _this.handleStatusChange.bind(_this);
         _this.startTimer = _this.startTimer.bind(_this);
+        _this.handleSecondsFormated = _this.handleSecondsFormated.bind(_this);
         return _this;
     }
 
@@ -9133,7 +9160,7 @@ var Timer = exports.Timer = function (_React$Component) {
     }, {
         key: 'componentDidUpdate',
         value: function componentDidUpdate(prevProps, prevStatus) {
-            if (this.state.status != prevStatus) {
+            if (this.state.status != prevStatus.status && this.state.status != 'lapse') {
                 switch (this.state.status) {
                     case 'started':
                         this.startTimer();
@@ -9141,11 +9168,16 @@ var Timer = exports.Timer = function (_React$Component) {
                     case 'stopped':
                         clearInterval(this.interval);
                         this.interval = undefined;
+                        this.setState({
+                            time: 0
+                        });
                         break;
                     case 'lapse':
-                        console.log(this.state.time);
+                        console.log(seconds);
                         break;
                     case 'paused':
+                        clearInterval(this.interval);
+                        this.interval = undefined;
                         break;
                 }
             }
@@ -9169,6 +9201,11 @@ var Timer = exports.Timer = function (_React$Component) {
             }, 1000);
         }
     }, {
+        key: 'handleSecondsFormated',
+        value: function handleSecondsFormated(seconds) {
+            this.secondsFormated = seconds;
+        }
+    }, {
         key: 'render',
         value: function render() {
             var _this3 = this;
@@ -9183,7 +9220,7 @@ var Timer = exports.Timer = function (_React$Component) {
                 _react2.default.createElement(
                     'div',
                     { className: 'column small-centered medium-6' },
-                    _react2.default.createElement(_Clock.Clock, { seconds: this.state.time, isTimer: true })
+                    _react2.default.createElement(_Clock.Clock, { seconds: this.state.time, isTimer: true, onSecondsFormated: this.handleSecondsFormated })
                 ),
                 _react2.default.createElement(
                     'div',

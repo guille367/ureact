@@ -12,14 +12,23 @@ export class Controls extends React.Component{
     }
     render(){
         let renderStartStopButton = () => {
-            if(this.props.countdownStatus === 'started'){
-                return <button className="button secondary" onClick={this.handleClickButton('paused')}>Pause</button>
+            let {countdownStatus, isTimer} = this.props;
+            let lapseCtrl = <button className="button secondary" onClick={this.handleClickButton('lapse')}>Lapse</button>;     
+
+            if(countdownStatus === 'started'){
+                return (<div>
+                            {lapseCtrl} 
+                            <button className="button secondary" onClick={this.handleClickButton('paused')}>Pause</button>
+                        </div>);
             }
-            else if (this.props.countdownStatus === 'stopped'){
+            else if (countdownStatus === 'stopped'){
                 return <button className="button primary" onClick={this.handleClickButton('started')}>Start</button>
             }
-            else if (this.props.countdownStatus === 'paused'){
-                return <button className="button primary" onClick={this.handleClickButton('started')}>Continue</button>
+            else if (countdownStatus === 'paused'){
+                return (<div>
+                        {lapseCtrl} 
+                        <button className="button primary" onClick={this.handleClickButton('started')}>Continue</button>
+                    </div>);
             }
         }
 
